@@ -1,3 +1,5 @@
+import 'package:absensi_siswa/home/absensi/view/absensi_card.dart';
+import 'package:absensi_siswa/home/models/data_siswa.dart';
 import 'package:absensi_siswa/utils/constant.dart';
 import 'package:absensi_siswa/utils/my_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,17 +23,18 @@ class _AbsensiPageState extends State<AbsensiPage> {
                 child:
                     appBar(backButton: true, title: museoText('Absensi Siswa')),
               ),
-              SizedBox(height: 30,),
-              Expanded(
-                child: ListView(
-                  children: <Widget>[
-                    _item1(
-                      name: 'Rifqi Firdaus',
-                      noInduk: '173140'
-                    )
-                  ],
-                ),
+              SizedBox(
+                height: 30,
               ),
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: dataSiswa.length,
+                      itemBuilder: (context, index) {
+                        return absenCard(
+                          nama: dataSiswa[index]['name'],
+                          noinduk: dataSiswa[index]['noInduk'],
+                        );
+                      })),
             ],
           ),
           Column(
@@ -69,54 +72,4 @@ class _AbsensiPageState extends State<AbsensiPage> {
       ],
     );
   }
-
-  _itemAbsensi() {
-    return Expanded(
-      child: ListView(
-      ),
-    );
-  }
-}
-
-_item1({ noInduk, name, source }) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 25.5,
-      vertical: 13.5,
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-//            Image.asset(
-//              'assets/images/person.png',
-//              width: 40,
-//              height: 40,
-//            ),
-//            SizedBox(width: 18.0),
-            museoText(
-              noInduk,
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-            SizedBox(width: 18.0),
-            museoText(
-              name,
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ],
-        ),
-        Icon(
-          Icons.keyboard_arrow_right,
-          size: 25,
-          color: vBlue2,
-        ),
-      ],
-    ),
-  );
 }
