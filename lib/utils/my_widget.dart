@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:absensi_siswa/utils/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_money_formatter/flutter_money_formatter.dart';
+// import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 museoText(String title,
     {Color color,
@@ -11,36 +11,16 @@ museoText(String title,
     FontWeight fontWeight,
     TextOverflow overflow,
     TextAlign align,
-    bool price = false,
-    bool number = false,
+    TextDecoration decoration,
     bool normal = false}) {
-  FlutterMoneyFormatter fmf;
-  if (number || price) {
-    fmf = new FlutterMoneyFormatter(
-      amount: (title != null && title != "") ? double.parse(title) : 0.0,
-      settings: MoneyFormatterSettings(
-        symbol: !number ? 'Rp' : '',
-        thousandSeparator: '.',
-        decimalSeparator: ',',
-        symbolAndNumberSeparator: ' ',
-        fractionDigits: 0,
-        compactFormatType: CompactFormatType.short,
-      ),
-    );
-  }
-
   return Text(
-    title != null
-        ? price || number
-            ? fmf.output.symbolOnLeft
-            : title
-        : "",
-    style: TextStyle(
+    title,
+    style: (TextStyle(
       fontFamily: normal ? "Roboto" : "museo",
       color: color,
       fontSize: fontSize,
       fontWeight: fontWeight,
-    ),
+    )),
     overflow: overflow,
     textAlign: align,
   );
@@ -66,35 +46,6 @@ appBar({
     elevation: 0.0,
     bottomOpacity: 0.0,
     title: title,
-    // actions: withActions
-    //     ? <Widget>[
-    //         Row(
-    //           children: <Widget>[
-    //             Icon(
-    //               Icons.notifications,
-    //               color: Colors.white,
-    //             ),
-    //             SizedBox(
-    //               width: 18.0,
-    //             ),
-    //             Icon(
-    //               Icons.favorite,
-    //               color: Colors.white,
-    //             ),
-    //             SizedBox(
-    //               width: 18.0,
-    //             ),
-    //             Icon(
-    //               Icons.shopping_cart,
-    //               color: Colors.white,
-    //             ),
-    //             SizedBox(
-    //               width: 20.0,
-    //             ),
-    //           ],
-    //         )
-    //       ]
-    //     : null,
   );
 }
 

@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: cardHome(
                     onTap: () => goToInformasi(context),
-
                     title: 'Informasi',
                     Icon: 'absensi.png',
                   ),
