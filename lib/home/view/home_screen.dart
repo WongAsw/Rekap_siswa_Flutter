@@ -1,6 +1,8 @@
 import 'package:absensi_siswa/utils/my_widget.dart';
 import 'package:absensi_siswa/utils/route.dart';
 import 'package:flutter/material.dart';
+import 'package:focused_menu/focused_menu.dart';
+import 'package:focused_menu/modals.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -68,6 +70,36 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(
                   child: cardHome(
+                    // ignore: missing_required_param
+                    onTap: () => FocusedMenuHolder(
+                      menuItems: <FocusedMenuItem>[
+                        FocusedMenuItem(
+                          title: Text("Hadir"),
+                          onPressed: () => {},
+                          trailingIcon: Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          ),
+                        ),
+                        FocusedMenuItem(
+                          title: Text("Izin"),
+                          onPressed: () => {},
+                          trailingIcon: Icon(
+                            Icons.warning_amber,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        FocusedMenuItem(
+                          title: Text("Alpha"),
+                          onPressed: () => {},
+                          trailingIcon: Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                      onPressed: () => {},
+                    ),
                     title: 'Rekap',
                     Icon: 'absensi.png',
                   ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:absensi_siswa/utils/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 // import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 museoText(String title,
@@ -128,4 +129,63 @@ cardAbsensi({title}) {
       ),
     ),
   );
+}
+
+alertAbsen(context) {
+  Alert(
+    context: context,
+    content: Column(
+      children: <Widget>[
+        InkWell(
+          // onTap: ()=>,
+          child: Icon(
+            Icons.check,
+            color: Colors.green,
+            size: 40,
+          ),
+        ),
+        SizedBox(height: 12),
+        InkWell(
+          // onTap: ()=>,
+          child: Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 24,
+          ),
+        ),
+        SizedBox(height: 12),
+        InkWell(
+          // onTap: ()=>,
+          child: Icon(
+            Icons.warning,
+            color: Colors.yellow,
+            size: 24,
+          ),
+        ),
+      ],
+    ),
+  ).show();
+}
+
+showContextMenu(BuildContext context) async {
+  final result = await showMenu(context: context, items: [
+    const PopupMenuItem(
+      child: Text('Add Me'),
+      value: "fav",
+    ),
+    const PopupMenuItem(
+      child: Text('Close'),
+      value: "close",
+    )
+  ]);
+  // perform action on selected menu item
+  switch (result) {
+    case 'fav':
+      print("fav");
+      break;
+    case 'close':
+      print('close');
+      Navigator.pop(context);
+      break;
+  }
 }
